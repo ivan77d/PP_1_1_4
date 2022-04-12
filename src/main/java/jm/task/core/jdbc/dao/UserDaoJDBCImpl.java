@@ -35,11 +35,6 @@ public class UserDaoJDBCImpl implements UserDao {
 
 
         } catch (Exception e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException ex) {
-//                ex.printStackTrace();
-//            }
             e.printStackTrace();
         }
     }
@@ -52,14 +47,8 @@ public class UserDaoJDBCImpl implements UserDao {
             connection.setAutoCommit(false);
             ps.executeUpdate();
             connection.commit();
-            //connection.setAutoCommit(true);
             connection.close();
         } catch (SQLException e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
             e.printStackTrace();
         }
     }
@@ -75,14 +64,8 @@ public class UserDaoJDBCImpl implements UserDao {
             ps.setByte(3, age);
             ps.executeUpdate();
             connection.commit();
-            //connection.setAutoCommit(true);
             connection.close();
         } catch (SQLException e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
             e.printStackTrace();
         }
     }
@@ -96,14 +79,8 @@ public class UserDaoJDBCImpl implements UserDao {
             ps.setLong(1, id);
             ps.executeUpdate();
             connection.commit();
-            //connection.setAutoCommit(true);
             connection.close();
         } catch (SQLException e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
             e.printStackTrace();
         }
     }
@@ -132,11 +109,6 @@ public class UserDaoJDBCImpl implements UserDao {
                 connection.close();
 
         } catch (SQLException e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
             e.printStackTrace();
         }
         return allUsers;
@@ -151,14 +123,8 @@ public class UserDaoJDBCImpl implements UserDao {
             connection.setAutoCommit(false);
             ps.executeUpdate();
             connection.commit();
-            //connection.setAutoCommit(true);
             connection.close();
         } catch (SQLException e) {
-//            try {
-//                connection.rollback();
-//            } catch (SQLException throwables) {
-//                throwables.printStackTrace();
-//            }
             e.printStackTrace();
         }
     }
