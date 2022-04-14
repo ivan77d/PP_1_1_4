@@ -16,7 +16,6 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void createUsersTable() {
         Session session = null;
-        try {
             session = sessionFactory.openSession();
             session.beginTransaction();
             final String sql = "CREATE TABLE IF NOT EXISTS user (" +
@@ -29,17 +28,12 @@ public class UserDaoHibernateImpl implements UserDao {
             session.createSQLQuery(sql);
             session.getTransaction().commit();
             session.close();
-        } catch(Exception ex)
-        {
-            throw ex;
-        }
     }
 
 
     @Override
     public void dropUsersTable() {
         Session session = null;
-        try{
             session = sessionFactory.openSession();
             session.beginTransaction();
             String sql = "DROP TABLE IF EXISTS user";
@@ -48,17 +42,11 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.println("Table drop");
             session.getTransaction().commit();
             session.close();
-        }catch(Exception ex)
-        {
-            throw ex;
-        }
-
     }
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
         Session session = null;
-        try{
             session = sessionFactory.openSession();
             session.beginTransaction();
             User user = new User(name, lastName, age);
@@ -66,17 +54,11 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.printf("User с именем %s добавлен в базу данных", user.getName());
             session.getTransaction().commit();
             session.close();
-        }catch(Exception ex)
-        {
-            throw ex;
-        }
-
     }
 
     @Override
     public void removeUserById(long id) {
         Session session = null;
-        try{
             session = sessionFactory.openSession();
             session.beginTransaction();
             Query query = session.createQuery("delete User WHERE id = :Id");
@@ -85,12 +67,6 @@ public class UserDaoHibernateImpl implements UserDao {
             System.out.println("User delete");
             session.getTransaction().commit();
             session.close();
-        }
-        catch(Exception ex)
-        {
-            throw ex;
-        }
-
     }
 
     @Override
@@ -101,7 +77,6 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public void cleanUsersTable() {
         Session session = null;
-        try{
             session = sessionFactory.openSession();
             session.beginTransaction();
             for (User user : getAllUsers()) {
@@ -109,10 +84,5 @@ public class UserDaoHibernateImpl implements UserDao {
             }
             session.getTransaction().commit();
             session.close();
-        }catch(Exception ex)
-        {
-            throw ex;
-        }
-
     }
 }
